@@ -1,10 +1,10 @@
 {
   "name": "piri-piri.client",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Tests are on module piri-piri itself\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/diasdavid/piri-piri.client/issues"
   },
-  "homepage": "https://github.com/diasdavid/piri-piri.client"
+  "homepage": "https://github.com/diasdavid/piri-piri.client",
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "jshint": "^2.5.6",
+    "precommit-hook": "^1.0.7"
+  },
+  "dependencies": {
+    "socket.io-client": "^1.2.0"
+  }
 }
