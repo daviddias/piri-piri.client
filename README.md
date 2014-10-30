@@ -1,4 +1,3 @@
-piri-piri.client
-================
+![](https://github.com/diasdavid/piri-piri/raw/master/img/logo.png)
 
-Check piri-piri for full docs
+**for documentation, please refer to [piri-piri](https://github.com/diasdavid/piri-piri)**
