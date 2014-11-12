@@ -3,29 +3,33 @@ var io = require('socket.io-client');
 exports = module.exports;
 
 var ioClient;
-var ppId;
+var commands = {};
 
 exports.start = function(options, cb) {
   var url = (options.url || 'http://localhost:9876');
   ioClient = io(url);
 
-  ppId = ((~~(Math.random() * 1e9)).toString(36) + Date.now());
-
   ioClient.on('connect', cb);
+
+  ioClient.on('execute', function(command) {
+    if(commands[command.order] === undefined) { 
+      return console.log(command.order + 'is not registred');
+    } 
+    commands[command](command.data);
+  });
 };
 
-exports.registerAction = function (command, action) {
-  ioClient.on(command, action);
+exports.register = function (command, action) {
+  commands[command] = action;
 };
 
-exports.sendMessage = function (message) {
-  var envelope = {
-    message: message,
-    date: Date.now(),
-    ppId: ppId
+exports.tell = function (data) {
+  var info = {
+    data: data,
+    timestamp: Date.now()
   };
-  console.log('SENDING MESSAGE');
-  ioClient.emit('message', envelope);
+
+  ioClient.emit('info', info);
 };
 
 // TODO
