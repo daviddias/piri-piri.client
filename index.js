@@ -15,12 +15,12 @@ exports.start = function(options, cb) {
     if(commands[command.order] === undefined) { 
       return console.log(command.order + 'is not registred');
     } 
-    commands[command](command.data);
+    commands[command.order](command.data);
   });
 };
 
-exports.register = function (command, action) {
-  commands[command] = action;
+exports.register = function (order, action) {
+  commands[order] = action;
 };
 
 exports.tell = function (data) {
